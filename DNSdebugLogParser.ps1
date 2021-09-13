@@ -34,6 +34,8 @@ foreach($line in $fileContnents)
      if( ([byte]$line[0] -lt 58) -and ([byte]$line[0] -gt 47)){
           if($line.Length -gt 72){
                $currLineNr++
+               $line2partsTEMP = $line.Split("]")
+               $currArray1 = $line2partsTEMP[0].Split(" ")
                
                #using first line to determine if format contains AM/PM 
                if($currLineNr -eq 1){ 
@@ -54,8 +56,6 @@ foreach($line in $fileContnents)
                if ($currLineNr -gt $nrOfLinesToProcess){ 
                     break
                }
-               $line2partsTEMP = $line.Split("]")
-               $currArray1 = $line2partsTEMP[0].Split(" ")
                
                if ($AMPMpresent){
                     $ipStr=$currArray1[9]
